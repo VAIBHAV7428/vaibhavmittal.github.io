@@ -11,7 +11,6 @@
       font-family: 'Inter', sans-serif;
       background-color: #f9fafb;
       color: #1f2937;
-      line-height: 1.6;
     }
     header {
       background-color: #111827;
@@ -28,13 +27,34 @@
       font-size: 1.1rem;
       color: #d1d5db;
     }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      background-color: #e5e7eb;
+      padding: 1rem;
+    }
+    nav button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      color: #111827;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    nav button:hover {
+      color: #2563eb;
+    }
     .container {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
     section {
-      margin-bottom: 2rem;
+      display: none;
+    }
+    section.active {
+      display: block;
     }
     h2 {
       color: #111827;
@@ -59,13 +79,23 @@
     <h1>Vaibhav Mittal</h1>
     <p>Risk Consultant | CIA & CFA Candidate | Internal Audit Specialist</p>
   </header>
+
+  <nav>
+    <button onclick="showTab('summary')">Summary</button>
+    <button onclick="showTab('experience')">Experience</button>
+    <button onclick="showTab('certifications')">Certifications</button>
+    <button onclick="showTab('education')">Education</button>
+    <button onclick="showTab('skills')">Skills</button>
+    <button onclick="showTab('contact')">Contact</button>
+  </nav>
+
   <div class="container">
-    <section>
+    <section id="summary" class="active">
       <h2>Professional Summary</h2>
       <p>Consultant at Protiviti with 2+ years of experience in internal audit, risk advisory, and forensic analysis. Skilled in executing stock and inventory audits, concurrent audits, and end-to-end risk assessments. Actively pursuing CIA and CFA designations to deepen analytical and financial expertise. Passionate about becoming a future-ready management consultant.</p>
     </section>
 
-    <section>
+    <section id="experience">
       <h2>Experience Highlights</h2>
       <ul>
         <li><strong>Protiviti:</strong> Led end-to-end audits for Blinkit and Zepto, managing a team of 10–12 people for 8 months.</li>
@@ -75,7 +105,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="certifications">
       <h2>Certifications</h2>
       <ul>
         <li>CIA (Certified Internal Auditor) – Pursuing</li>
@@ -87,7 +117,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="education">
       <h2>Education</h2>
       <ul>
         <li>B.Com, SOL DU – 75%</li>
@@ -96,7 +126,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="skills">
       <h2>Skills</h2>
       <ul>
         <li>Internal Audit & Risk Advisory</li>
@@ -107,11 +137,21 @@
       </ul>
     </section>
 
-    <section class="contact">
+    <section id="contact" class="contact">
       <h2>Contact</h2>
       <p>Email: <a href="mailto:vaibhav.mittal@email.com">vaibhav.mittal@email.com</a></p>
       <p>LinkedIn: <a href="https://www.linkedin.com/in/vaibhavmittal/" target="_blank">linkedin.com/in/vaibhavmittal</a></p>
     </section>
   </div>
+
+  <script>
+    function showTab(tabId) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
