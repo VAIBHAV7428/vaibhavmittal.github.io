@@ -2,160 +2,255 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Vaibhav Mittal | Risk Consultant</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    body {
-      margin: 0;
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0; padding: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #fff;
+      background: #fff;
       color: #1f2937;
-      line-height: 1.6;
+      height: 100vh;
+      overflow: hidden;
     }
-    .container {
-      width: 90%;
-      max-width: 900px;
-      margin: auto;
-    }
-    header {
-      text-align: center;
-      padding: 2rem 0;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
-      color: #111827;
-    }
-    header p {
-      margin-top: 0.5rem;
-      font-size: 1.2rem;
-      color: #4b5563;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-    nav button {
-      background-color: #f3f4f6;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #111827;
-    }
-    nav button:hover {
-      background-color: #e5e7eb;
-    }
-    .slide {
-      display: none;
-      animation: fadein 0.5s ease-in;
-    }
-    .slide.active {
-      display: block;
-    }
-    @keyframes fadein {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    h2 {
-      color: #111827;
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 0.5rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    .contact a {
+    a {
       color: #2563eb;
       text-decoration: none;
     }
-    .contact a:hover {
+    a:hover {
       text-decoration: underline;
     }
+
+    /* Layout */
+    .app {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    nav.sidebar {
+      width: 240px;
+      background: #111827;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding-top: 2rem;
+      user-select: none;
+    }
+    nav.sidebar h1 {
+      font-weight: 700;
+      font-size: 1.7rem;
+      margin: 0 0 1rem 2rem;
+      letter-spacing: 1px;
+    }
+    nav.sidebar .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-left: 1.5rem;
+    }
+    nav.sidebar .nav-links button {
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      font-weight: 600;
+      font-size: 1rem;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav.sidebar .nav-links button.active,
+    nav.sidebar .nav-links button:hover {
+      background-color: #2563eb;
+      color: white;
+    }
+
+    /* Main Content */
+    main.content {
+      flex-grow: 1;
+      background: #f9fafb;
+      padding: 2.5rem 3rem;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      position: relative;
+    }
+
+    main.content section {
+      display: none;
+      animation: fadeInSlide 0.5s ease forwards;
+    }
+    main.content section.active {
+      display: block;
+    }
+
+    /* Section Headers */
+    h2 {
+      color: #111827;
+      font-weight: 700;
+      border-bottom: 3px solid #2563eb;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    p, li {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #374151;
+    }
+    ul {
+      padding-left: 1.3rem;
+      margin: 0;
+    }
+    ul li {
+      margin-bottom: 0.6rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInSlide {
+      0% {
+        opacity: 0;
+        transform: translateX(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 720px) {
+      nav.sidebar {
+        width: 60px;
+        padding-top: 1rem;
+      }
+      nav.sidebar h1 {
+        display: none;
+      }
+      nav.sidebar .nav-links button {
+        padding: 0.6rem;
+        font-size: 0;
+        position: relative;
+      }
+      nav.sidebar .nav-links button::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        left: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #111827;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        font-size: 0.9rem;
+      }
+      nav.sidebar .nav-links button:hover::after {
+        opacity: 1;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <header>
-    <h1>Vaibhav Mittal</h1>
-    <p>Risk Consultant | CIA & CFA Candidate | Internal Audit Specialist</p>
-  </header>
 
-  <div class="container">
-    <nav>
-      <button onclick="showSlide('summary')">Summary</button>
-      <button onclick="showSlide('experience')">Experience</button>
-      <button onclick="showSlide('certifications')">Certifications</button>
-      <button onclick="showSlide('education')">Education</button>
-      <button onclick="showSlide('skills')">Skills</button>
-      <button onclick="showSlide('contact')">Contact</button>
+  <div class="app">
+
+    <nav class="sidebar" aria-label="Primary">
+      <h1>Vaibhav Mittal</h1>
+      <div class="nav-links" role="tablist">
+        <button role="tab" aria-selected="true" aria-controls="summary" id="tab-summary" class="active" data-tooltip="Summary" onclick="showSection('summary')">Summary</button>
+        <button role="tab" aria-selected="false" aria-controls="experience" id="tab-experience" data-tooltip="Experience" onclick="showSection('experience')">Experience</button>
+        <button role="tab" aria-selected="false" aria-controls="certifications" id="tab-certifications" data-tooltip="Certifications" onclick="showSection('certifications')">Certifications</button>
+        <button role="tab" aria-selected="false" aria-controls="education" id="tab-education" data-tooltip="Education" onclick="showSection('education')">Education</button>
+        <button role="tab" aria-selected="false" aria-controls="skills" id="tab-skills" data-tooltip="Skills" onclick="showSection('skills')">Skills</button>
+        <button role="tab" aria-selected="false" aria-controls="contact" id="tab-contact" data-tooltip="Contact" onclick="showSection('contact')">Contact</button>
+      </div>
     </nav>
 
-    <section id="summary" class="slide active">
-      <h2>Professional Summary</h2>
-      <p>Consultant at Protiviti with 2+ years of experience in internal audit, risk advisory, and forensic analysis. Skilled in executing stock and inventory audits, concurrent audits, and end-to-end risk assessments. Actively pursuing CIA and CFA designations to deepen analytical and financial expertise. Passionate about becoming a future-ready management consultant.</p>
-    </section>
+    <main class="content">
+      <section id="summary" role="tabpanel" aria-labelledby="tab-summary" class="active">
+        <h2>Professional Summary</h2>
+        <p>Consultant at Protiviti with 2+ years of experience in internal audit, risk advisory, and forensic analysis. Skilled in executing stock and inventory audits, concurrent audits, and end-to-end risk assessments. Actively pursuing CIA and CFA designations to deepen analytical and financial expertise. Passionate about becoming a future-ready management consultant.</p>
+      </section>
 
-    <section id="experience" class="slide">
-      <h2>Experience Highlights</h2>
-      <ul>
-        <li><strong>Protiviti:</strong> Led end-to-end audits for Blinkit and Zepto, managing a team of 10–12 people for 8 months.</li>
-        <li><strong>Xiaomi Mystery Audit:</strong> Streamlined fieldwork with Google Forms; designed Power BI dashboard for client clarity.</li>
-        <li><strong>PMKVY Concurrent Audit:</strong> Automated checklists, improved reporting for NSDC; independently managed project amidst team exits.</li>
-        <li><strong>FOS Scheme & ONDC:</strong> Conducted internal audits, supported CII skill scheme evaluation.</li>
-      </ul>
-    </section>
+      <section id="experience" role="tabpanel" aria-labelledby="tab-experience">
+        <h2>Experience Highlights</h2>
+        <ul>
+          <li><strong>Protiviti:</strong> Led end-to-end audits for Blinkit and Zepto, managing a team of 10–12 people over 8 months.</li>
+          <li><strong>Xiaomi Mystery Audit:</strong> Streamlined fieldwork with Google Forms; designed Power BI dashboard for client clarity.</li>
+          <li><strong>PMKVY Concurrent Audit:</strong> Automated checklists, improved reporting for NSDC; independently managed project amidst team exits.</li>
+          <li><strong>FOS Scheme & ONDC:</strong> Conducted internal audits, supported CII skill scheme evaluation.</li>
+          <li><strong>Wipro FAR:</strong> Took over key responsibilities after sudden team exits and successfully managed critical processes under pressure.</li>
+          <li><strong>Risk Sensing Projects:</strong> Contributed to data-driven audits using technology and predictive analytics.</li>
+        </ul>
+      </section>
 
-    <section id="certifications" class="slide">
-      <h2>Certifications</h2>
-      <ul>
-        <li>CIA (Certified Internal Auditor) – Pursuing</li>
-        <li>CFA – Access Scholarship Applicant</li>
-        <li>Audit Analyst – KPMG</li>
-        <li>Strategy Consultant – BCG</li>
-        <li>Accounting & Business – Masters' Union, LinkedIn, CFI</li>
-        <li>Risk Management – Mentorkart</li>
-      </ul>
-    </section>
+      <section id="certifications" role="tabpanel" aria-labelledby="tab-certifications">
+        <h2>Certifications</h2>
+        <ul>
+          <li>CIA (Certified Internal Auditor) – Pursuing</li>
+          <li>CFA – Access Scholarship Applicant</li>
+          <li>Audit Analyst – KPMG</li>
+          <li>Strategy Consultant – BCG</li>
+          <li>Accounting & Business – Masters' Union, LinkedIn, CFI</li>
+          <li>Risk Management – Mentorkart</li>
+        </ul>
+      </section>
 
-    <section id="education" class="slide">
-      <h2>Education</h2>
-      <ul>
-        <li>B.Com, SOL DU – 75%</li>
-        <li>12th Grade – 85%</li>
-        <li>10th Grade – 75%</li>
-      </ul>
-    </section>
+      <section id="education" role="tabpanel" aria-labelledby="tab-education">
+        <h2>Education</h2>
+        <ul>
+          <li>B.Com, SOL DU – 75%</li>
+          <li>12th Grade – 85%</li>
+          <li>10th Grade – 75%</li>
+        </ul>
+      </section>
 
-    <section id="skills" class="slide">
-      <h2>Skills</h2>
-      <ul>
-        <li>Internal Audit & Risk Advisory</li>
-        <li>Power BI & Excel</li>
-        <li>Process Automation & Reporting</li>
-        <li>Leadership & Team Management</li>
-        <li>Financial Analysis & Compliance</li>
-      </ul>
-    </section>
+      <section id="skills" role="tabpanel" aria-labelledby="tab-skills">
+        <h2>Skills</h2>
+        <ul>
+          <li>Internal Audit & Risk Advisory</li>
+          <li>Power BI & Excel</li>
+          <li>Process Automation & Reporting</li>
+          <li>Leadership & Team Management</li>
+          <li>Financial Analysis & Compliance</li>
+        </ul>
+      </section>
 
-    <section id="contact" class="slide contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:vaibhav.mittal@email.com">vaibhav.mittal@email.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/" target="_blank">linkedin.com/in/vaibhavmittal</a></p>
-    </section>
+      <section id="contact" role="tabpanel" aria-labelledby="tab-contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:vaibhav.mittal@email.com">vaibhav.mittal@email.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/vaibhavmittal/" target="_blank" rel="noopener noreferrer">linkedin.com/in/vaibhavmittal</a></p>
+      </section>
+    </main>
   </div>
 
   <script>
-    function showSlide(id) {
-      document.querySelectorAll('.slide').forEach(slide => {
-        slide.classList.remove('active');
+    function showSection(id) {
+      // Hide all sections
+      document.querySelectorAll('main.content section').forEach(section => {
+        section.classList.remove('active');
+        section.setAttribute('aria-hidden', 'true');
       });
-      document.getElementById(id).classList.add('active');
-    }
-  </script>
-</body>
-</html>
+
+      // Remove active state from all nav buttons
+      document.querySelectorAll('nav.sidebar button').forEach(button => {
+        button.classList.remove('active');
+        button.setAttribute('aria-selected', 'false');
+      });
+
+      // Show selected section
+      const activeSection = document.getElementById(id);
+      activeSection.classList.add
+
