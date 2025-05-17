@@ -9,58 +9,63 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: #f9fafb;
+      background-color: #fff;
       color: #1f2937;
+      line-height: 1.6;
+    }
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: auto;
     }
     header {
-      background-color: #111827;
-      color: #fff;
-      padding: 2rem 1rem;
       text-align: center;
+      padding: 2rem 0;
     }
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 2.5rem;
+      color: #111827;
     }
     header p {
       margin-top: 0.5rem;
-      font-size: 1.1rem;
-      color: #d1d5db;
+      font-size: 1.2rem;
+      color: #4b5563;
     }
     nav {
       display: flex;
       justify-content: center;
-      gap: 1.5rem;
-      background-color: #e5e7eb;
-      padding: 1rem;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
     nav button {
-      background: none;
+      background-color: #f3f4f6;
       border: none;
-      font-size: 1rem;
-      color: #111827;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
       cursor: pointer;
       font-weight: 600;
+      color: #111827;
     }
     nav button:hover {
-      color: #2563eb;
+      background-color: #e5e7eb;
     }
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    section {
+    .slide {
       display: none;
+      animation: fadein 0.5s ease-in;
     }
-    section.active {
+    .slide.active {
       display: block;
+    }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     h2 {
       color: #111827;
       border-bottom: 2px solid #e5e7eb;
       padding-bottom: 0.5rem;
-      font-size: 1.5rem;
     }
     ul {
       padding-left: 1.2rem;
@@ -80,22 +85,22 @@
     <p>Risk Consultant | CIA & CFA Candidate | Internal Audit Specialist</p>
   </header>
 
-  <nav>
-    <button onclick="showTab('summary')">Summary</button>
-    <button onclick="showTab('experience')">Experience</button>
-    <button onclick="showTab('certifications')">Certifications</button>
-    <button onclick="showTab('education')">Education</button>
-    <button onclick="showTab('skills')">Skills</button>
-    <button onclick="showTab('contact')">Contact</button>
-  </nav>
-
   <div class="container">
-    <section id="summary" class="active">
+    <nav>
+      <button onclick="showSlide('summary')">Summary</button>
+      <button onclick="showSlide('experience')">Experience</button>
+      <button onclick="showSlide('certifications')">Certifications</button>
+      <button onclick="showSlide('education')">Education</button>
+      <button onclick="showSlide('skills')">Skills</button>
+      <button onclick="showSlide('contact')">Contact</button>
+    </nav>
+
+    <section id="summary" class="slide active">
       <h2>Professional Summary</h2>
       <p>Consultant at Protiviti with 2+ years of experience in internal audit, risk advisory, and forensic analysis. Skilled in executing stock and inventory audits, concurrent audits, and end-to-end risk assessments. Actively pursuing CIA and CFA designations to deepen analytical and financial expertise. Passionate about becoming a future-ready management consultant.</p>
     </section>
 
-    <section id="experience">
+    <section id="experience" class="slide">
       <h2>Experience Highlights</h2>
       <ul>
         <li><strong>Protiviti:</strong> Led end-to-end audits for Blinkit and Zepto, managing a team of 10–12 people for 8 months.</li>
@@ -105,7 +110,7 @@
       </ul>
     </section>
 
-    <section id="certifications">
+    <section id="certifications" class="slide">
       <h2>Certifications</h2>
       <ul>
         <li>CIA (Certified Internal Auditor) – Pursuing</li>
@@ -117,7 +122,7 @@
       </ul>
     </section>
 
-    <section id="education">
+    <section id="education" class="slide">
       <h2>Education</h2>
       <ul>
         <li>B.Com, SOL DU – 75%</li>
@@ -126,7 +131,7 @@
       </ul>
     </section>
 
-    <section id="skills">
+    <section id="skills" class="slide">
       <h2>Skills</h2>
       <ul>
         <li>Internal Audit & Risk Advisory</li>
@@ -137,20 +142,19 @@
       </ul>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact" class="slide contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:vaibhavmittal941@gmail.com">vaibhavmittal941@Gmail.com</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/vaibhavmittal941/" target="_blank">https://www.linkedin.com/in/vaibhavmittal941/</a></p>
+      <p>Email: <a href="mailto:vaibhav.mittal@email.com">vaibhav.mittal@email.com</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/" target="_blank">linkedin.com/in/vaibhavmittal</a></p>
     </section>
   </div>
 
   <script>
-    function showTab(tabId) {
-      const sections = document.querySelectorAll('section');
-      sections.forEach(section => {
-        section.classList.remove('active');
+    function showSlide(id) {
+      document.querySelectorAll('.slide').forEach(slide => {
+        slide.classList.remove('active');
       });
-      document.getElementById(tabId).classList.add('active');
+      document.getElementById(id).classList.add('active');
     }
   </script>
 </body>
